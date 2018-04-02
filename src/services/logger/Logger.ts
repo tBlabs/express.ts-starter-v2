@@ -38,7 +38,7 @@ export class Logger implements ILogger
             else
                 if (obj instanceof Object)
                 {
-                    return JSON.stringify(obj)
+                    return JSON.stringify(obj);
                 }
                 else
                 {
@@ -75,7 +75,7 @@ export class Logger implements ILogger
         {
             this.config.output(entry);
         }
-        else 
+        else
         {
             console.log('[' + Logger.name + '] No log output specified');
         }

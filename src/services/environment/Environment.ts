@@ -1,13 +1,13 @@
 import { IEnvironment } from './IEnvironment';
 import { injectable } from 'inversify';
 import 'reflect-metadata';
- 
+
 @injectable()
 export class Environment implements IEnvironment
 {
     public Exists(key: string): boolean
     {
-        return (process.env[key] !== undefined)
+        return (process.env[key] !== undefined);
     }
 
     public IsSet(key: string): boolean

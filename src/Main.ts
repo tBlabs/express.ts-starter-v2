@@ -22,5 +22,5 @@ export class Main
         /* Put your code here */
         /* And then run `npm run serve` */
         /* Don't forget to create `.env` file */
-    } 
+    }
 }
