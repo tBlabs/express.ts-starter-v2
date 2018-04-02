@@ -10,7 +10,7 @@ import { IEnvironment } from './../services/environment/IEnvironment';
 import { Environment } from './../services/environment/Environment';
 import { Logger } from '../services/logger/Logger';
 import { Main } from '../Main';
-import { ISample } from "../services/_samples/ISample";
+import { ISample } from '../services/_samples/ISample';
 import { SampleService } from './../services/_samples/SampleService';
 
 const IoC = new Container();

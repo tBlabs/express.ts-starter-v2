@@ -27,15 +27,23 @@ export class Logger implements ILogger
     private ObjectToString(obj: any): string
     {
         if (obj === undefined)
+        {
             return 'undefined';
+        }
         else
             if (obj === null)
+            {
                 return 'null';
+            }
             else
                 if (obj instanceof Object)
+                {
                     return JSON.stringify(obj)
+                }
                 else
+                {
                     return obj;
+                }
     }
 
     private ArgsToString(args: any[]): string

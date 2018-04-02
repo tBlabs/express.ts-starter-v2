@@ -3,11 +3,10 @@
 This a very basic startup project with `Node.js`+`ES7` and `Typescript` prepared for Linux environment.
 
 Extra features:
-- Dependency Injection (in `./src/IoC/`) with samples
+- Dependency Injection (in `./src/IoC`) with samples
 - Local environment variables (in `.env`)
 - Some convenient commands (look at `package.json` `scripts` section)
-- Tests samples (`jest` inside)
-- It's `Heroku` "ready"
+- Test samples (`jest` inside)
 - `async/await` included, `axios` on board
 - Extra services: `Logger`, `Environment` and `RunMode`
 
@@ -15,10 +14,10 @@ Extra features:
 
 Use `npm i` to install local packages. Use `npm run preinstall` to install global packages.
 
-Add `.env` to `.gitignore`. Included file is only for demonstration purpose.
+Add `.env`. You can based on `.env.example`.
 
 ## Where to start?
 
-In `Main.ts` `Run()` method. This is the place for your code. Put all dependencies in a constructor (don't forget to add them to IoC).
+In `Main.ts`, `Run()` method. This is the place for your code. Put all dependencies in a constructor (don't forget to add them to IoC `./src/IoC/IoC.ts` and optionally to `Types.ts`).
 
 Use `npm run serve` to build and run your code continuously.

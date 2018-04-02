@@ -12,13 +12,15 @@ export class Main
 {
     constructor(
         @inject(Types.ILogger) private _log: ILogger,
-        @inject(Types.IEnvironment) private _env: IEnvironment)
+        @inject(Types.IRunMode) private _runMode: IRunMode)
     { }
 
     public async Run(): Promise<void>
     {
-        this._log.Info('Main.Run', 'Starting in "' + this._env.ValueOf('MODE') + '" mode');
+        this._log.Info('Main.Run', 'Starting in "' + this._runMode.Current + '" mode');
 
         /* Put your code here */
-    }
+        /* And then run `npm run serve` */
+        /* Don't forget to create `.env` file */
+    } 
 }

@@ -15,6 +15,5 @@ import { Main } from './Main';
     catch (ex)
     {
         console.log('Startup exception:', ex);
-    }
-    
+    }    
 })();

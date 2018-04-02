@@ -2,9 +2,9 @@ import { LogType } from './LogType';
 
 export class LogEntry
 {
-    type: LogType;
-    path: string;
-    args: any[];
-    message: string;
-    time: Date;
+    public type: LogType;
+    public path: string;
+    public args: any[];
+    public message: string;
+    public time: Date;
 }

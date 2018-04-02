@@ -21,11 +21,7 @@
         "build": "tsc -p .",
         "clean": "rm ./bin -rf",
         "autofix": "tslint --fix --project .",
-        "publish": "git push origin master",
-        "logs:stage": "heroku logs --tail --remote stage",
-        "logs:prod": "heroku logs --tail --remote prod",
-        "deploy:stage": "git push stage master && npm run stage:logs",
-        "deploy:prod": "git push prod master && npm run prod:logs"
+        "publish": "git push origin master"
     },
     "devDependencies": {
         "@types/axios": "^0.14.0",

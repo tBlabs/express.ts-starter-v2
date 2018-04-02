@@ -3,3 +3,4 @@
 /_priv
 /bin
 /.vscode
+.env
