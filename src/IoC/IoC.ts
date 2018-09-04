@@ -12,6 +12,8 @@ import { Logger } from '../services/logger/Logger';
 import { Main } from '../Main';
 import { ISample } from '../services/_samples/ISample';
 import { SampleService } from './../services/_samples/SampleService';
+import { IStartupArgs } from '../services/environment/IStartupArgs';
+import { StartupArgs } from '../services/environment/StartupArgs';
 
 const IoC = new Container();
 
@@ -23,6 +25,7 @@ try
     IoC.bind<IRunMode>(Types.IRunMode).to(RunMode).whenTargetIsDefault();
     IoC.bind<ILogger>(Types.ILogger).to(Logger).inSingletonScope().whenTargetIsDefault();
     IoC.bind<Main>(Main).toSelf().inSingletonScope().whenTargetIsDefault();
+    IoC.bind<IStartupArgs>(Types.IStartupArgs).to(StartupArgs).inSingletonScope().whenTargetIsDefault();
 }
 catch (ex)
 {
