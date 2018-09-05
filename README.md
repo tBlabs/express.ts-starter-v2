@@ -1,10 +1,11 @@
 # node.ts
 
-This a very basic startup project with `Node.js`+`ES7` and `Typescript` prepared for Linux environment.
+This a very basic startup project with `Node.js`, `ES7` and `Typescript`. Prepared for Linux environment.
 
 Extra features:
 - Dependency Injection (in `./src/IoC`) with samples
 - Local environment variables (in `.env`)
+- Command line arguments parser (`StartupArgs` class)
 - Some convenient commands (look at `package.json` `scripts` section)
 - Test samples (`jest` inside)
 - `async/await` included, `axios` on board

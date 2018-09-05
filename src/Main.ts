@@ -19,10 +19,10 @@ export class Main
 
     public async Run(): Promise<void>
     {
-        this._log.Info('Main.Run', 'Starting in "' + this._runMode.Current + '" mode with args:', this._args.Args); // Try it with "npm run run --foo bar"
-
+        this._log.Info('Main.Run', 'Starting in "' + this._runMode.Current + '" mode with args:', this._args.Args); // Dont Try it with "npm run run --foo bar" or "npm run run -- --foo bar", it won't work! Call script directly: "tsc || /bin/startup.js --foo bar"*
+      
         /* Put your code here */
         /* And then run `npm run serve` */
-        /* Don't forget to create `.env` file */
+        /* Don't forget to set your enviroment variables (`.env` file) */
     }
 }

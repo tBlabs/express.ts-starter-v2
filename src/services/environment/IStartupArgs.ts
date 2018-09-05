@@ -1,4 +1,7 @@
+import * as minimist from 'minimist';
+
 export interface IStartupArgs
 {
-    Args: string[];
+    RawArgs: string[];
+    Args: minimist.ParsedArgs;    
 }
