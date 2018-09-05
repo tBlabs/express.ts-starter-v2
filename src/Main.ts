@@ -1,10 +1,6 @@
 import { IRunMode } from './services/runMode/IRunMode';
-import { RunMode } from './services/runMode/RunMode';
-import { IEnvironment } from './services/environment/IEnvironment';
 import { ILogger } from './services/logger/ILogger';
-import { Logger } from './services/logger/Logger';
 import { injectable, inject } from 'inversify';
-import { Environment } from './services/environment/Environment';
 import { Types } from './IoC/Types';
 import { IStartupArgs } from './services/environment/IStartupArgs';
 
@@ -19,7 +15,7 @@ export class Main
 
     public async Run(): Promise<void>
     {
-        this._log.Info('Main.Run', 'Starting in "' + this._runMode.Current + '" mode with args:', this._args.Args); // Dont Try it with "npm run run --foo bar" or "npm run run -- --foo bar", it won't work! Call script directly: "tsc || /bin/startup.js --foo bar"*
+        this._log.Info('Main.Run', 'Starting in "' + this._runMode.Current + '" mode with args:', this._args.Args); // Don't Try it with "npm run run --foo bar" or "npm run run -- --foo bar", it won't work! Call script directly: "tsc || /bin/startup.js --foo bar"
       
         /* Put your code here */
         /* And then run `npm run serve` */
