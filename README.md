@@ -25,11 +25,11 @@ Use `npm run serve` to build and run your code continuously.
 
 ## How to call program with args?
 
-Just call it directly: `startup.js`
+Just call it directly: `node startup.js --foo bar`. 
 Don't do it by npm scripts like `npm run run -- --foo bar`. It may not work.
 
 ## How to make this program executable?
 
-Add `#!/usr/bin/env node` at the very begining on main faile (`startup.ts`).
+Add `#!/usr/bin/env node` at the very begining of startup file (`startup.ts`). This is already done.
 Then call `sudo chmod u+x ./bin/startup.js`.
-Now you can use your script like regular program. You can call it with `./startup`. No `node startup.js` needed.
+Now you can use your script like a regular program. You can call it with `./startup`. No `node startup.js` needed.
