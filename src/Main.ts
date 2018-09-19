@@ -19,6 +19,6 @@ export class Main
       
         /* Put your code here */
         /* And then run `npm run serve` */
-        /* Don't forget to set your enviroment variables (`.env` file) */
+        /* Don't forget to set your environment variables (`.env` file) */
     }
 }
