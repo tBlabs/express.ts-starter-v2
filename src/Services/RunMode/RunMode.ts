@@ -1,8 +1,7 @@
 import { IRunMode } from './IRunMode';
-import { Environment } from '../environment/Environment';
 import { injectable, inject } from 'inversify';
 import { Types } from './../../IoC/Types';
-import { IEnvironment } from './../../services/environment/IEnvironment';
+import { IEnvironment } from './../../Services/Environment/IEnvironment';
 
 @injectable()
 export class RunMode implements IRunMode

@@ -1,24 +1,53 @@
-import { IRunMode } from './services/runMode/IRunMode';
-import { ILogger } from './services/logger/ILogger';
 import { injectable, inject } from 'inversify';
 import { Types } from './IoC/Types';
-import { IStartupArgs } from './services/environment/IStartupArgs';
+import * as express from 'express';
+import * as http from 'http';
+import * as socketIo from 'socket.io';
+import * as path from 'path';
+import { IStartupArgs } from './Services/Environment/IStartupArgs';
+import { Repeater } from './Services/Repeater/Repeater';
 
 @injectable()
 export class Main
 {
     constructor(
-        @inject(Types.IStartupArgs) private _args: IStartupArgs,
-        @inject(Types.ILogger) private _log: ILogger,
-        @inject(Types.IRunMode) private _runMode: IRunMode)
+        @inject(Types.IStartupArgs) private _args: IStartupArgs)
     { }
 
-    public async Run(): Promise<void>
+    private get ClientDir(): string
     {
-        this._log.Info('Main.Run', 'Starting in "' + this._runMode.Current + '" mode with args:', this._args.Args); // Don't Try it with "npm run run --foo bar" or "npm run run -- --foo bar", it won't work! Call script directly: "tsc || /bin/startup.js --foo bar"
-      
-        /* Put your code here */
-        /* And then run `npm run serve` */
-        /* Don't forget to set your environment variables (`.env` file) */
+        const s = __dirname.split(path.delimiter); // __dirname returns '/home/tb/projects/EventsManager/bin'. We don't wanna 'bin'...
+        return s.slice(0, s.length - 1).join(path.delimiter) + '/client';
+    }
+
+    public async Start(): Promise<void>
+    {
+        const server = express();
+        const httpServer = http.createServer(server);
+        const socket = socketIo(httpServer);
+
+        server.get('/favicon.ico', (req, res) => res.status(204));
+
+        server.get('/ping', (req, res) => res.send('pong'));
+
+        server.use(express.static(this.ClientDir));
+
+        socket.on('connection', (socket: socketIo.Socket) =>
+        {
+            console.log('CLIENT CONNECTED', socket.id);
+
+            Repeater.EverySecond((counter) =>
+            {
+                socket.emit('data', { foo: counter });
+            });
+        });
+
+        const port = 3000;
+        httpServer.listen(port, () => console.log('SERVER STARTED @ ' + port));
+
+        process.on('SIGINT', () =>
+        {
+            httpServer.close(() => console.log('SERVER CLOSED'));
+        });
     }
 }

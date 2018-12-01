@@ -12,7 +12,7 @@ import { Main } from './Main';
     try
     {
         const main: Main = IoC.get(Main);
-        await main.Run();
+        await main.Start();
     }
     catch (ex)
     {

@@ -1,6 +1,10 @@
-# node.ts
+# express.ts
 
-This a very basic startup project with `Node.js`, `ES7` and `Typescript`. Prepared for Linux environment.
+This a very basic startup project with `Node.js`, `ES7`, `Typescript` and `express` with `socket.io`.
+
+There is also basic client connected via socket.
+
+*Prepared for Linux environment.*
 
 Extra features:
 - Dependency Injection (in `./src/IoC`) with samples
