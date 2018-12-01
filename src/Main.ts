@@ -16,8 +16,8 @@ export class Main
 
     private get ClientDir(): string
     {
-        const s = __dirname.split(path.delimiter); // __dirname returns '/home/tb/projects/EventsManager/bin'. We don't wanna 'bin'...
-        return s.slice(0, s.length - 1).join(path.delimiter) + '/client';
+        const s = __dirname.split(path.sep); // __dirname returns '/home/tb/projects/EventsManager/bin'. We don't wanna 'bin'...
+        return s.slice(0, s.length - 1).join(path.sep) + '/client';
     }
 
     public async Start(): Promise<void>
@@ -41,7 +41,7 @@ export class Main
                 socket.emit('data', { foo: counter });
             });
         });
- 
+
         const port = 3000;
         httpServer.listen(port, () => console.log('SERVER STARTED @ ' + port));
 
