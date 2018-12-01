@@ -42,7 +42,7 @@ export class Main
             });
         });
 
-        const port = 3000;
+        const port = 4000;
         httpServer.listen(port, () => console.log('SERVER STARTED @ ' + port));
 
         process.on('SIGINT', () =>

@@ -1,7 +1,7 @@
 {
-    "name": "node.ts-startup",
+    "name": "express.ts",
     "version": "1.0.0",
-    "description": "node.ts boilerplate",
+    "description": "node with express boilerplate",
     "main": "./bin/startup.js",
     "author": "tB",
     "license": "beerware",
