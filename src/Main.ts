@@ -41,7 +41,7 @@ export class Main
                 socket.emit('data', { foo: counter });
             });
         });
-
+ 
         const port = 3000;
         httpServer.listen(port, () => console.log('SERVER STARTED @ ' + port));
 
