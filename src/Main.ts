@@ -6,12 +6,16 @@ import * as socketIo from 'socket.io';
 import * as path from 'path';
 import { IStartupArgs } from './Services/Environment/IStartupArgs';
 import { Repeater } from './Services/Repeater/Repeater';
+import { IEnvironment } from './Services/Environment/IEnvironment';
+import * as bodyParser from 'body-parser';
+import * as cors from 'cors';
 
 @injectable()
 export class Main
 {
     constructor(
-        @inject(Types.IStartupArgs) private _args: IStartupArgs)
+        @inject(Types.IStartupArgs) private _args: IStartupArgs,
+        @inject(Types.IEnvironment) private _env: IEnvironment)
     { }
 
     private get ClientDir(): string
@@ -25,6 +29,8 @@ export class Main
         const server = express();
         const httpServer = http.createServer(server);
         const socket = socketIo(httpServer);
+        server.use(cors({ exposedHeaders: 'Content-Length' }));
+        server.use(bodyParser.json());
 
         server.get('/favicon.ico', (req, res) => res.status(204));
 
@@ -38,11 +44,11 @@ export class Main
 
             Repeater.EverySecond((counter) =>
             {
-                socket.emit('data', { foo: counter });
+                socket.emit('data', { counter: counter });
             });
         });
 
-        const port = 4000;
+        const port = this._env.ValueOrDefault('PORT', '4000');
         httpServer.listen(port, () => console.log('SERVER STARTED @ ' + port));
 
         process.on('SIGINT', () =>
