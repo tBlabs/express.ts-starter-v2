@@ -1,3 +1,4 @@
+import { MessageBus } from './../MessageBus';
 import { OldPeopleRepo, YoungPeopleRepo } from './../_Tests/YoungPeopleRepo';
 import 'reflect-metadata';
 import { TemperatureSensor, Http, IHttp, IConverter, Converter } from './../TemperatureSensor';
@@ -6,6 +7,7 @@ import { Container } from 'inversify';
 import { Main } from '../Main';
 import { IStrategy } from '../_Tests/IStrategy';
 import { IsYoungStrategy, IsOldStrategy } from '../_Tests/IsYoungStrategy';
+import { SampleQueryHandler } from '../Handlers/SampleHandler';
 
 const IoC = new Container();
 
@@ -20,6 +22,8 @@ try
     IoC.bind<IStrategy>(Types.IStrategy).to(IsOldStrategy).inTransientScope();
     IoC.bind(OldPeopleRepo).toSelf().inSingletonScope();
     IoC.bind(YoungPeopleRepo).toSelf().inSingletonScope();
+
+    IoC.bind(MessageBus).toSelf();
 }
 catch (ex)
 {
