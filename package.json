@@ -16,6 +16,7 @@
         "watch": "tsc --watch",
         "monitor": "nodemon ./bin/startup.js",
         "serve": "npm run clean && run-p watch monitor",
+        "serve:win": "run-p watch monitor",
         "lint": "tslint -c tslint.json './src/**/*.{ts,tsx}' --format msbuild",
         "test": "jest --runInBand",
         "build": "tsc -p .",
