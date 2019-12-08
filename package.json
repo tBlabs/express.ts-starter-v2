@@ -51,6 +51,7 @@
         "inversify": "^4.1.0",
         "jasmine-core": "^2.6.1",
         "minimist": "^1.2.0",
+        "moq.ts": "^3.0.0",
         "os": "^0.1.1",
         "reflect-metadata": "^0.1.10",
         "socket.io": "^2.1.1",
