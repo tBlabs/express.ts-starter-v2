@@ -1,21 +1,13 @@
-#!/usr/bin/env node
+import 'reflect-metadata';
+import { Host } from "./Services/Host";
+import { Container } from 'inversify';
+import { MessageBus } from './CQRS/MessageBus';
 
-import * as dotenv from 'dotenv';
-dotenv.config(); // Loads variables from '.env' file to process.env
-
-import { IoC } from './IoC/IoC';
-import './MessageBusConfig';
-import { Main } from './Main';
-
-(async () =>
+export class Startup
 {
-    try
+    public ConfigureServices(services: Container): void
     {
-        const main: Main = IoC.get(Main);
-        await main.Start();
+        services.bind(MessageBus).toSelf().inSingletonScope();
+        services.bind(Host).toSelf().inSingletonScope();
     }
-    catch (ex)
-    {
-        console.log('Startup exception:', ex);
-    }
-})();
+}
