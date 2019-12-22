@@ -2,7 +2,7 @@
     "name": "express.ts",
     "version": "1.0.0",
     "description": "node with express boilerplate",
-    "main": "./bin/startup.js",
+    "main": "./bin/src/bootstrap.js",
     "author": "tB",
     "license": "beerware",
     "engines": {
@@ -11,7 +11,7 @@
     },
     "scripts": {
         "x_preinstall": "sudo npm i -g typescript jest tslint npm-run-all",
-        "start": "node ./bin/bootstrap.js",
+        "start": "node ./bin/src/bootstrap.js",
         "run": "npm run clean && npm run build && clear && npm run start",
         "run:win": "npm run build && npm run start",
         "watch": "tsc --watch",

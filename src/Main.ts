@@ -1,9 +1,9 @@
 import 'reflect-metadata';
 import { injectable } from 'inversify';
-import { SampleQueryHandler } from './Handlers/SampleQueryHandler';
-import { SampleQuery } from "./Handlers/SampleQuery";
 import { MessageBus } from './CQRS/MessageBus';
 import { Host } from './Services/Host';
+import { SimpleSampleFunctionalityConfig } from './Functionalities/SimpleSample/Config';
+import { AdvancedSampleFunctionalityConfig } from './Functionalities/AdvancedSample/Config';
 
 @injectable()
 export class Main
@@ -15,7 +15,8 @@ export class Main
 
     private ConfigureMessageBus()
     {
-        this._messageBus.Register(SampleQuery, SampleQueryHandler);
+        SimpleSampleFunctionalityConfig.MessageBusConfig(this._messageBus);
+        AdvancedSampleFunctionalityConfig.MessageBusConfig(this._messageBus);
     }
 
     public async Start(): Promise<void>

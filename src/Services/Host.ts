@@ -6,13 +6,14 @@ import * as socketIo from 'socket.io';
 import * as path from 'path';
 import * as bodyParser from 'body-parser';
 import * as cors from 'cors';
+import { HostConfig } from './HostConfig';
 
 @injectable()
 export class Host
 {
     private server;
 
-    constructor()
+    constructor(private _config: HostConfig)
     {
         this.server = express();
         const httpServer = http.createServer(this.server);
@@ -24,8 +25,7 @@ export class Host
         this.server.get('/favicon.ico', (req, res) => res.status(204));
         this.server.get('/ping', (req, res) => res.send('pong'));
 
-        const port = process.env.PORT; // TODO: this is a bad solution; move it outside
-        httpServer.listen(port, () => console.log('SERVER STARTED @ ' + port));
+        httpServer.listen(_config.Port, () => console.log('SERVER STARTED @ ' + _config.Port));
      
         process.on('SIGINT', () =>
         {
