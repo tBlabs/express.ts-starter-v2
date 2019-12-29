@@ -1,4 +1,4 @@
-## This is good but...
+## About
 
 I tried to make architecture of this app similar to typical .NET Core WebAPI and I believe I reached the goal some way:
 - we have an `IoC Container` with `request scope`
@@ -9,8 +9,6 @@ What's more:
 
 But:
 - we are not able to write .NET style e2e tests with http client (but we don't need it anyway cause it's sufficient to test handlers unitly); but we still can write e2e tests (with running host)
-
-And:
 - few problems is still not solved, like: middlewares attaching etc (probably we just need to do it maually in a `Host` class)
 
 ## Project structure
@@ -27,3 +25,11 @@ Samples can be found in `tests` catalog.
 ## Config
 
 `.env` for host `PORT` is required.
+
+## Manual test
+
+1. Set `PORT` in `.env` file
+2. `npm run serve`
+3. Open `localhost:PORT`
+4. `curl http://localhost:PORT/ping`
+5. `Invoke-WebRequest "http://localhost:4000/MessageBus" -Method POST -Headers @{"Content-Type" = "application/json"} -Body '{"SampleQuery":{"Foo":"123"}}'` should return `{"Bar":15129}`
