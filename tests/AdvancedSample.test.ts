@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import { Service } from "../src/Functionalities/AdvancedSample/Services/Service";
 import { TestEnv } from './TestEnv';
 
-test('Advanced', () =>
+test('Advanced example. Request scope test.', () =>
 {
     const testEnv = new TestEnv();
 

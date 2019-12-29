@@ -8,6 +8,7 @@ import * as bodyParser from 'body-parser';
 import * as cors from 'cors';
 import { HostConfig } from './HostConfig';
 
+// TODO: add typing here
 @injectable()
 export class Host
 {

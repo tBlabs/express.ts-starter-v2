@@ -1,13 +1,13 @@
 {
-    "name": "express.ts",
+    "name": "express.ts-v2",
     "version": "1.0.0",
-    "description": "node with express boilerplate",
+    "description": "express + IoC + CQRS",
     "main": "./bin/src/bootstrap.js",
     "author": "tB",
     "license": "beerware",
     "engines": {
-        "node": "8.4.0",
-        "npm": "5.3.0"
+        "node": "10.16.0",
+        "npm": "6.9.0"
     },
     "scripts": {
         "x_preinstall": "sudo npm i -g typescript jest tslint npm-run-all",

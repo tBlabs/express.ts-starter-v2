@@ -23,7 +23,8 @@ class Request
 @injectable()
 class Dependency
 {
-    constructor(public _singleton: Singleton,
+    constructor(
+        public _singleton: Singleton,
         public _transient: Transient,
         public _request: Request)
     { }
@@ -32,23 +33,22 @@ class Dependency
 @injectable()
 class Resolver
 {
-    constructor(public _singleton: Singleton,
+    constructor(
+        public _singleton: Singleton,
         public _transient: Transient,
         public _request: Request,
         public _dependency: Dependency)
     { }
 }
 
-test('inversify', () =>
+test('test of inversify scopes', () =>
 {
     const container = new Container();
 
     container.bind(Singleton).toSelf().inSingletonScope();
     container.bind(Transient).toSelf().inTransientScope();
     container.bind(Request).toSelf().inRequestScope(); // Works like TransientScope when we use container.get
-    container.bind(Resolver).toSelf().inTransientScope();
-    container.bind(Dependency).toSelf().inTransientScope();
-
+    
     const singleton = container.get(Singleton);
     const singletonGuid = singleton.guid;
     const singleton2 = container.get(Singleton);
@@ -72,6 +72,9 @@ test('inversify', () =>
 
     expect(requestGuid).not.toBe(request2Guid); // NOT EQUAL
 
+    
+    container.bind(Resolver).toSelf().inTransientScope();
+    container.bind(Dependency).toSelf().inTransientScope();
 
     const resolver = container.get(Resolver);
     expect(resolver._singleton.guid).toBe(resolver._dependency._singleton.guid);

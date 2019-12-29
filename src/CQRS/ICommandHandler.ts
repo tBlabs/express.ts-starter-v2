@@ -1,4 +1,4 @@
-export interface ICommandHandler<Q>
+export interface ICommandHandler<C>
 {
-    Handle(query: Q): Promise<void>;
+    Handle(command: C): Promise<void>;
 }
