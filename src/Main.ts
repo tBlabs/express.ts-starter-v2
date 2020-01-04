@@ -4,6 +4,7 @@ import { MessageBus } from './CQRS/MessageBus';
 import { Host } from './Services/Host';
 import { SimpleSampleFunctionalityConfig } from './Functionalities/SimpleSample/Config';
 import { AdvancedSampleFunctionalityConfig } from './Functionalities/AdvancedSample/Config';
+import { json } from 'express';
 
 @injectable()
 export class Main
@@ -25,7 +26,11 @@ export class Main
 
         this._host.OnPost('/MessageBus', async (req, res) =>
         {
+            console.log("MESSAGE: " + JSON.stringify(req.body));
+            
             const result = await this._messageBus.Execute(req.body);
+
+            console.log("RESULT: " + JSON.stringify(result));
 
             res.send(result);
         });

@@ -24,7 +24,7 @@ Samples can be found in `tests` catalog.
 
 ## Config
 
-`.env` for host `PORT` is required.
+`.env` for host `PORT` is required. For test use `4000`.
 
 ## Manual test
 
@@ -32,4 +32,6 @@ Samples can be found in `tests` catalog.
 2. `npm run serve`
 3. Open `localhost:PORT`
 4. `curl http://localhost:PORT/ping`
-5. `Invoke-WebRequest "http://localhost:4000/MessageBus" -Method POST -Headers @{"Content-Type" = "application/json"} -Body '{"SampleQuery":{"Foo":"123"}}'` should return `{"Bar":15129}`
+5. On Windows@Powershell: `Invoke-WebRequest "http://localhost:4000/MessageBus" -Method POST -Headers @{"Content-Type" = "application/json"} -Body '{"SampleQuery":{"Foo":"123"}}'` 
+On Linux@bash: `curl -X POST localhost:4000/MessageBus --data '{"SampleQuery":{"Foo":"123"}}' --header "Content-Type: application/json"`  
+Should return `{"Bar":15129}` 
