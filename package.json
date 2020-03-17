@@ -50,7 +50,7 @@
         "git-rev": "^0.2.1",
         "inversify": "^5.0.1",
         "jasmine-core": "^3.5.0",
-        "minimist": "^1.2.0",
+        "minimist": "^1.2.2",
         "moq.ts": "^3.0.0",
         "os": "^0.1.1",
         "reflect-metadata": "^0.1.13",
